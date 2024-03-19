@@ -15,4 +15,7 @@ jobs:
       - run: |
           cd desktop-app
           npm install
+
+      - run: |
+          cd desktop-app
           npm test
