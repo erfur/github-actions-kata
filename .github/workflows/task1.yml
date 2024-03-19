@@ -5,5 +5,5 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ env.GITHUB_REF_NAME }}
-      - run: ls -lah
+      - run: echo $GITHUB_REF_NAME
+      - run: ls -lahR
