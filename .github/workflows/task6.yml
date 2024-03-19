@@ -32,12 +32,13 @@ jobs:
           npm run make
 
       - run: |
+          mkdir release
           cd desktop-app/out/
           find . -name "*.zip" -exec cp {} ../../release/ \;
 
       - name: release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/desktop-app-')
+        if: startsWith(github.ref, 'refs/tags/desktop-app')
         with:
           files: |
             release/*.zip
