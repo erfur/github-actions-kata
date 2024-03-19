@@ -5,5 +5,9 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $GITHUB_REF_NAME
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - run: echo $GITHUB_REF
+
       - run: ls -lahR
