@@ -1,0 +1,40 @@
+name: task5
+run-name: task5
+on:
+  push:
+    paths:
+      - "desktop-app/**/*.ts"
+jobs:
+  task5:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: "npm"
+          cache-dependency-path: ./desktop-app/package-lock.json
+
+      - run: |
+          cd desktop-app
+          npm install
+
+      - run: |
+          cd desktop-app
+          npm test
+
+      - run: |
+          cd desktop-app
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- npm run e2e
+
+      - if: ${{ failure() }}
+        run: zip -r ss.zip desktop-app/test-results/
+
+      - if: ${{ failure() }}
+        name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots.zip
+          path: ss.zip
