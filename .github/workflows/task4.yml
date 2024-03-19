@@ -32,3 +32,9 @@ jobs:
       - if: ${{ failure() }}
         run: |
           zip -r ss.zip desktop-app/test-results/
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: screeshots.zip
+          path: ss.zip
