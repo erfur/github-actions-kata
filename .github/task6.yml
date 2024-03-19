@@ -2,6 +2,8 @@ name: task6
 run-name: task6
 on:
   push:
+    branches:
+      - "task6"
     tags:
       - "desktop-app-**"
 
