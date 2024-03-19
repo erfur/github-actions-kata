@@ -31,6 +31,9 @@ jobs:
           cd desktop-app
           npm run make
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
       # - run: |
       #     mkdir release
       #     cd desktop-app/out/
@@ -42,6 +45,3 @@ jobs:
         with:
           files: |
             desktop-app/out/**/*.zip
-
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
