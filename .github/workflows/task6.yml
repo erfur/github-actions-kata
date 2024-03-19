@@ -45,3 +45,7 @@ jobs:
         with:
           files: |
             desktop-app/out/**/*.zip
+            desktop-app/out/**/*.deb
+            desktop-app/out/**/*.rpm
+            desktop-app/out/**/*.exe
+            desktop-app/out/**/*.msi
