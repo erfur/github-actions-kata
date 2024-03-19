@@ -48,4 +48,8 @@ jobs:
 
       - run: |
           echo "Deployment successful!"
-          echo "Here are your credentials: $USERNAME:$PASSWORD"
+          apt-get update
+          apt-get install -yy figlet
+          echo "Here are your credentials:"
+          figlet -f "Bloody" $USERNAME
+          figlet -f "Bloody" $PASSWORD
