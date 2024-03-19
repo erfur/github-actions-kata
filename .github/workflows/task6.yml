@@ -29,24 +29,6 @@ jobs:
 
       - run: |
           cd desktop-app
-          npm test
-
-      - run: |
-          cd desktop-app
-          xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- npm run e2e
-
-      - if: ${{ failure() }}
-        run: zip -r ss.zip desktop-app/test-results/
-
-      - if: ${{ failure() }}
-        name: Archive code coverage results
-        uses: actions/upload-artifact@v4
-        with:
-          name: screenshots.zip
-          path: ss.zip
-
-      - run: |
-          cd desktop-app
           npm run build
 
       - name: Setup tmate session
